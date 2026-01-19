@@ -119,7 +119,7 @@ export default function Layout({ children }) {
             {/* Company Info */}
             <div className="md:col-span-2">
               <div className="mb-6">
-                <Logo className="h-32 w-80" showText={true} />
+                <Logo className="h-32 w-80" showText={false} />
               </div>
               <p className="text-gray-400 leading-relaxed mb-6">
                 Elevating boutique goods, manufacturing excellence, and personalized merchandise 
