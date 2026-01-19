@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Menu, X, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo";
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -31,14 +32,11 @@ export default function Layout({ children }) {
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-              <div className="text-2xl font-light tracking-tight">
-                <span className="font-serif italic text-rose-600">SEBAA DON</span>
-                <span className="text-gray-900 ml-2">LIMITED</span>
-              </div>
+            <Link to={createPageUrl("Home")} className="flex items-center hover:opacity-90 transition-opacity duration-200">
+              <Logo className="h-20 w-56" showText={false} />
             </Link>
 
             {/* Desktop Navigation */}
@@ -120,16 +118,15 @@ export default function Layout({ children }) {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Company Info */}
             <div className="md:col-span-2">
-              <div className="text-3xl font-light mb-4">
-                <span className="font-serif italic text-rose-400">SEBAA DON</span>
-                <span className="ml-2">LIMITED</span>
+              <div className="mb-6">
+                <Logo className="h-32 w-80" showText={true} />
               </div>
               <p className="text-gray-400 leading-relaxed mb-6">
                 Elevating boutique goods, manufacturing excellence, and personalized merchandise 
                 to unprecedented heights. Your vision, our expertise.
               </p>
               <div className="flex gap-4">
-                <a href="mailto:info@sebaadon.com" className="w-10 h-10 rounded-full bg-white/10 hover:bg-rose-600 flex items-center justify-center transition-colors duration-300">
+                <a href="mailto:info@sebaadonlimited.com" className="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-600 flex items-center justify-center transition-colors duration-300">
                   <Mail className="w-5 h-5" />
                 </a>
                 <a href="tel:+15551234567" className="w-10 h-10 rounded-full bg-white/10 hover:bg-rose-600 flex items-center justify-center transition-colors duration-300">
@@ -157,9 +154,9 @@ export default function Layout({ children }) {
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-lg font-medium mb-4 text-rose-400">Contact</h3>
+              <h3 className="text-lg font-medium mb-4 text-cyan-400">Contact</h3>
               <ul className="space-y-3 text-gray-400">
-                <li>info@sebaadonltd.shop</li>
+                <li>info@sebaadonlimited.com</li>
                 <li>+44 7429 919750</li>
                 <li>
                   340a, 

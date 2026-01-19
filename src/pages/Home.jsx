@@ -1,73 +1,168 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Package, Printer, ShoppingBag } from "lucide-react";
+import { ArrowRight, Sparkles, Package, Printer, ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+      title: "Digital Fashion Revolution",
+      subtitle: "3D Virtual Garments & Metaverse Fashion"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1600&q=80",
+      title: "AI-Powered Design Tools",
+      subtitle: "Create, Innovate, Transform Your Ideas"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=1600&q=80",
+      title: "Virtual Fashion Showcase",
+      subtitle: "AR Try-Ons & Digital Collections"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&q=80",
+      title: "Premium Direct-to-Consumer",
+      subtitle: "Luxury Fashion Delivered to Your Door"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80",
+      title: "Boutique Excellence",
+      subtitle: "Curated Collections for Discerning Tastes"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   const services = [
     {
       icon: Sparkles,
+      title: "Digital Fashion Design",
+      description: "Cutting-edge digital assets and tools for modern fashion designers"
+    },
+    {
+      icon: Package,
       title: "Boutique Goods",
       description: "Curated selection of premium, handpicked products that embody elegance and exclusivity"
     },
     {
-      icon: Package,
+      icon: Printer,
       title: "Manufacturing",
       description: "State-of-the-art production facilities delivering quality at scale"
     },
     {
-      icon: Printer,
-      title: "Merchandise Printing",
-      description: "Custom printing solutions that bring your personal brand to life"
-    },
-    {
       icon: ShoppingBag,
-      title: "Direct-to-Consumer",
-      description: "Premium clothing and merchandise delivered straight to your door"
+      title: "Merchandise Printing & Direct-to-Consumer",
+      description: "Custom printing solutions and premium apparel delivered straight to your door"
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80")`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }} />
+      {/* Hero Slideshow Section */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Slideshow Background */}
+        <div className="absolute inset-0">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+            </div>
+          ))}
         </div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
-          <div className="inline-block mb-6 px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-            <span className="text-sm font-medium tracking-wider text-rose-300">NEW PLAYER IN PREMIUM GOODS</span>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center w-full">
+          <div className="mb-8">
+            <div className="inline-block px-6 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/30 mb-6">
+              <span className="text-sm font-medium tracking-wider text-rose-300">
+                ✨ NEXT GENERATION FASHION TECH
+              </span>
+            </div>
+
+            {/* Animated Title */}
+            <h1 className="text-5xl md:text-7xl font-light mb-4 tracking-tight text-white animate-fade-in">
+              <span className="block font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-rose-400 to-rose-500 mb-2">
+                {slides[currentSlide].title}
+              </span>
+              <span className="block text-3xl md:text-4xl font-light text-white/90">
+                {slides[currentSlide].subtitle}
+              </span>
+            </h1>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight">
-            <span className="block font-serif italic text-rose-300">SEBAA DON</span>
-            <span className="block mt-2">LIMITED</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-            Where craftsmanship meets innovation. Elevating boutique goods, manufacturing excellence, 
-            and personalized merchandise to unprecedented heights.
+
+          <p className="text-lg md:text-xl text-gray-200 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            Where craftsmanship meets cutting-edge innovation. Elevating digital fashion, manufacturing excellence, 
+            and personalized experiences to unprecedented heights for the next generation.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link to={createPageUrl("Services")}>
-              <Button className="bg-rose-600 hover:bg-rose-700 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105">
-                Explore Our Services
+              <Button className="bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                Explore Services
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Link to={createPageUrl("Contact")}>
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full backdrop-blur-sm">
+              <Button variant="outline" className="border-white/50 text-white hover:bg-white/20 px-8 py-6 text-lg rounded-full backdrop-blur-md transition-all duration-300">
                 Get in Touch
               </Button>
             </Link>
           </div>
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-6 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hidden md:flex items-center justify-center"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-6 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hidden md:flex items-center justify-center"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlide
+                  ? "bg-rose-500 w-8 h-2"
+                  : "bg-white/40 hover:bg-white/60 w-2 h-2"
+              }`}
+            />
+          ))}
         </div>
       </section>
 

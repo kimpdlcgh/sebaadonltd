@@ -82,7 +82,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-gray-900 mb-1">Email Us</h3>
-                    <p className="text-gray-600">info@sebaadonltd.shop</p>
+                    <p className="text-gray-600">info@sebaadonlimited.com</p>
                   </div>
                 </div>
 

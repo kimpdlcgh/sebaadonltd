@@ -4,10 +4,34 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function Portfolio() {
   const projects = [
     {
+      title: "Digital Fashion Sketch Templates",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+      description: "Professional Procreate/Photoshop templates for fashion design"
+    },
+    {
+      title: "3D Virtual Garment Assets",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      description: "3D clothing models for virtual fashion and metaverse applications"
+    },
+    {
+      title: "AI Fashion Design Presets",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=800&q=80",
+      description: "AI-assisted prompts and presets for trend forecasting and mood boards"
+    },
+    {
       title: "Luxury Apparel Collection",
       category: "Direct-to-Consumer",
       image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80",
       description: "Premium clothing line with custom branding"
+    },
+    {
+      title: "Fashion Tech Pack Templates",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      description: "Editable technical packs for manufacturers and production"
     },
     {
       title: "Corporate Merchandise",
@@ -16,16 +40,28 @@ export default function Portfolio() {
       description: "Complete branded merchandise suite"
     },
     {
+      title: "AR Fashion Try-On Experience",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+      description: "Augmented reality filters and virtual try-on solutions"
+    },
+    {
+      title: "Custom Brush Pack Collection",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+      description: "Procreate brushes for fashion textures (silk, denim, knit)"
+    },
+    {
       title: "Artisan Home Goods",
       category: "Boutique Collection",
       image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80",
       description: "Curated selection of premium home products"
     },
     {
-      title: "Custom Manufacturing",
-      category: "Production",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
-      description: "Specialized production run for unique products"
+      title: "Digital Wardrobe Planner",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      description: "Interactive capsule wardrobe guide and styling tool"
     },
     {
       title: "Promotional Materials",
@@ -34,14 +70,14 @@ export default function Portfolio() {
       description: "High-quality printed marketing collateral"
     },
     {
-      title: "Fashion Accessories",
-      category: "Boutique Collection",
-      image: "https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=800&q=80",
-      description: "Exclusive accessories and small goods"
+      title: "Virtual Showroom Assets",
+      category: "Digital Fashion",
+      image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=800&q=80",
+      description: "3D scenes and assets for online collection presentations"
     }
   ];
 
-  const categories = ["All", "Boutique Collection", "Manufacturing", "Printing Services", "Direct-to-Consumer"];
+  const categories = ["All", "Digital Fashion", "Boutique Collection", "Printing Services", "Direct-to-Consumer"];
   const [activeCategory, setActiveCategory] = React.useState("All");
 
   const filteredProjects = activeCategory === "All" 
